@@ -11,15 +11,19 @@ app.controller("learningController", function ($scope) {
         {name: "Cappu"},
         {name: "Google"},
         {name: "Facebook"}
-    ]
+    ];
+    
+    $scope.name = "This is scope name";
     
 });
 
 app.directive("direcOne", function() {
    return {
-       restrict:    "A",
-       template:    "This is my first Directive",
-       scope:       true,
+       restrict:    "E",
+       templateUrl:    "directives/direcOne.html",
+       scope:       {
+            name: "@"
+       },
        link:        function(scope) {
            console.log(scope);
        }

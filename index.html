@@ -3,14 +3,18 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.5/angular.js"></script>
         <title>Learn AngularJS</title>
         <script src="app.js"></script>
+        <link rel="stylesheet" href="style.css">
     </head>
     <body ng-app="learnAngular" ng-init="hello ='Hello World! Hello Angular!'">
         <div ng-controller="learningController as learnNg">
-            <div ng-repeat="item in list">
+            
+            <input type="text" ng-model="model">
+            
+            <div class="repeater" ng-repeat="item in list | filter: model">
                 {{ item.name }}
             </div>
             
-            <div direc-one direc-two></div>
+            <direc-one name="{{ name }}"></direc-one>
             
         </div>
     </body>
