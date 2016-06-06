@@ -17,6 +17,14 @@ app.controller("learningController", function ($scope, $rootScope) {
     
     $scope.myclick = function () {
         console.log("I click on this div!");
+    };
+    
+    $scope.myFunctionExample = function () {
+        return "google 2";
+    };
+    
+    $scope.cappuScope = function (text) {
+        return text;
     }
     
 });
@@ -55,5 +63,16 @@ app.directive("myClick", function() {
                console.log(scope);
             });
        },
+   } 
+});
+
+app.directive("functionDirective", function () {
+   return {
+       restrict: "EA",
+       scope: {
+           myFunction: "&",
+           cappu: "@"
+       },
+       template: "<div> {{ myFunction() }} </div>"
    } 
 });
