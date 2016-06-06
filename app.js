@@ -1,6 +1,6 @@
 var app = angular.module("learnAngular", []);
 
-app.controller("learningController", function ($scope) {
+app.controller("learningController", function ($scope, $rootScope) {
     
     var self = this;
     
@@ -15,6 +15,10 @@ app.controller("learningController", function ($scope) {
     
     $scope.name = "This is scope name";
     
+    $scope.myclick = function () {
+        console.log("I click on this div!");
+    }
+    
 });
 
 app.directive("direcOne", function() {
@@ -25,7 +29,6 @@ app.directive("direcOne", function() {
             name: "@"
        },
        link:        function(scope) {
-           console.log(scope);
        }
    } 
 });
@@ -36,7 +39,21 @@ app.directive("direcTwo", function(){
        template:    "This is second Directive",
        scope:       true,
        link:    function(scope){
-           console.log(scope);
        }
+   } 
+});
+
+app.directive("myClick", function() {
+   return {
+       restrict: "A",
+       scope: {
+           myClick: "&",
+       },
+       link: function (scope, el, attrs) {
+            el.on("click", function(){
+               scope.name = "Huy Cuong name in link function";
+               console.log(scope);
+            });
+       },
    } 
 });
