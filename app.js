@@ -76,3 +76,37 @@ app.directive("functionDirective", function () {
        template: "<div> {{ myFunction() }} </div>"
    } 
 });
+
+app.directive("direcContrExam", function () {
+    return {
+        restrict: "AE",
+        controller: function ($scope, $element) {
+            $scope.name = "Huy Cuong";
+            console.log("This is controller!");
+            //console.log($scope);
+        },
+        link: function (scope, el, attrs) {
+            console.log(scope.name);
+            console.log("This is link func!");
+            //console.log(scope);
+        }
+    };
+});
+
+app.directive("myClickDirective", function ($parse) {
+    return {
+        restrict: "E",
+        scope: {
+            //myFunction: "&",
+        },
+        link: function (scope, el, attrs) {
+            var fn = $parse(attrs["myFunction"]);
+            el.on("click", function () {
+                console.log("I clicked in this div!");
+            });
+        },
+        template: "<div> my click directive </div>"
+    }
+});
+
+
